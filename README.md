@@ -26,8 +26,7 @@ you</a>. However, this library will not work with Ruby versions prior to
     bundle
 ```
 
-### Step2: Ammend your ApplicationController (or any other controller
-you subclass from)
+### Step2: Amend your ApplicationController (or any other controller you subclass from)
 
 ```ruby
     class ApplicationController < ActionController::Base
