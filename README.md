@@ -53,15 +53,15 @@ you</a>. However, this library will not work with Ruby versions prior to
 
 filter\_attributes takes parameters:
 
-- **resource_name** key in params hash where attributes for resource
-  are passed, for example ```:user``` will mean ```params[:user]``` stores
-attributes to be filtered
-- **options** (Hash), with keys
+- **resource_name** prefix of method name, which returns filtered
+  attributes. ```:user``` will generate user_attributes method on
+controller.
+  - **options** (Hash), with keys
   - **:allow** (Array) list of allowed attributes, defaults to ```[]```
-  - **:as** (Symbol) prefix of helper method, defaults to resource_name,
-    for example ```filter_attributes_for :user, as: :account```
-will seek for attributes in ```params[:user]```, but create helper method
-account_attributes in your controller
+  - **:as** (Symbol) key in ```params``` hash, from where attributes are
+    taken, defaults to resource_name, for example ```filter_attributes_for :user, as: :account```
+will seek for attributes in ```params[:account]```, but create helper method
+user_attributes in your controller
   - **:only** (Array) - list of actions that parameters will be filtered
     for
   - **:except** (Array) - opposite of **only**, can't be used together

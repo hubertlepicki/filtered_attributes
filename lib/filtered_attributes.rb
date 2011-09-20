@@ -12,7 +12,7 @@ module FilteredAttributes
           instance_variable_get "@_#{options[:as]}_attributes"
         end
 
-        self.send :private, "#{options[:as]}_attributes".to_sym
+        self.send :private, "#{resource_name}_attributes".to_sym
 
         filter_params = if options[:only]
           { only: options[:only] }
@@ -26,11 +26,11 @@ module FilteredAttributes
           params_hash = if options[:attributes_hash].respond_to? :call
             options[:attributes_hash].call params
           else
-            params[resource_name]
+            params[options[:as]]
           end
 
           if params_hash
-            instance_variable_set "@_#{options[:as]}_attributes", HashWithIndifferentAccess.new(
+            instance_variable_set "@_#{resource_name}_attributes", HashWithIndifferentAccess.new(
               params_hash.select {|k,v| options[:allow].include?(k.to_s)}
             )
           end
