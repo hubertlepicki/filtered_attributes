@@ -1,3 +1,11 @@
-= FilteredAttributes
+Planned API in use:
 
-This project rocks and uses MIT-LICENSE.
+    class UsersController < ApplicationController
+      filter_attributes_for :user, as: :account, only: [:create],
+                                   allow: [:name, :email, :password],
+                                   root: -> { |p| p[:crazy].first[:params] }
+
+      def create
+        User.create! account_attributes
+      end
+    end

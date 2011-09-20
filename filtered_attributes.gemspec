@@ -7,11 +7,11 @@ require "filtered_attributes/version"
 Gem::Specification.new do |s|
   s.name        = "filtered_attributes"
   s.version     = FilteredAttributes::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of FilteredAttributes."
-  s.description = "TODO: Description of FilteredAttributes."
+  s.authors     = ["Hubert Lepicki"]
+  s.email       = ["hubert.lepicki@amberbit.com"]
+  s.homepage    = "http://amberbit.com/"
+  s.summary     = "Provides alternative way to filter mass-assignment attributes, which you pass to ActiveModel models in controllers."
+  s.description = "Different than attr_accessible/protected (that can still be used with this gem), you can specify which parameters will be allowed in your controllers."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]

@@ -16,4 +16,10 @@ class AdvancedFiltersControllerTest < ActionController::TestCase
     put :update, id: 1, account: { email: "foo@example.com", admin: true }
     assert_nil passed_params[:email]
   end
+
+  test "should allow specifying attributes_hash" do
+    post :foo, foo: { bar: { account: { email: "foo@example.com", admin: true }}}
+    assert_nil passed_params[:admin]
+    assert_equal passed_params[:email], "foo@example.com"
+  end
 end
