@@ -17,8 +17,9 @@ you</a>. However, this library will not work with Ruby versions prior to
 1.9.
 
 ### Step1: Add the gem to Gemfile:
+
 ```ruby
-    gem 'filtered_attributes, '~> 0.1.0'
+    gem 'filtered_attributes', '~> 0.1.0'
 ```
 
 ```bash
@@ -27,6 +28,7 @@ you</a>. However, this library will not work with Ruby versions prior to
 
 ### Step2: Ammend your ApplicationController (or any other controller
 you subclass from)
+
 ```ruby
     class ApplicationController < ActionController::Base
       include FilteredAttributes::Filters
@@ -38,10 +40,10 @@ you subclass from)
 # Usage
 
 ## Basics
+
 ```ruby
     class UsersController < ApplicationController
-      filter_attributes_for :user, allow: [:email, :password,
-:password_confirmation]
+      filter_attributes_for :user, allow: [:email, :password, :password_confirmation]
       def create
         User.create! user_attributes
       end
@@ -53,19 +55,19 @@ you subclass from)
 filter\_attributes takes parameters:
 
 - **resource_name** key in params hash where attributes for resource
-  are passed, for example :user will mean params[:user] stores
+  are passed, for example ```:user``` will mean ```params[:user]``` stores
 attributes to be filtered
 - **options** (Hash), with keys
-  - **:allow** (Array) list of allowed attributes, defaults to []
+  - **:allow** (Array) list of allowed attributes, defaults to ```[]```
   - **:as** (Symbol) prefix of helper method, defaults to resource_name,
-    for example ```ruby filter_attributes_for :user, as: :account```
-will seek for attributes in params[:user], but create helper method
+    for example ```filter_attributes_for :user, as: :account```
+will seek for attributes in ```params[:user]```, but create helper method
 account_attributes in your controller
   - **:only** (Array) - list of actions that parameters will be filtered
     for
   - **:except** (Array) - opposite of **only**, can't be used together
   - **:attributes_hash** (Lambda) - pass your procedure if you want to
-    find your model attributes somewhere deeper in params hash. Params
+    find your model attributes somewhere deeper in ```params``` hash. Params
 hash will be passed to this lambda as it's only parameter.
 
 # Legal
